@@ -44,7 +44,7 @@ resposta.status(500).json({msg:"Erro ao adicionar produtos"})
 //rota para editar produtos
 app.put('/:id', (requisicao, resposta) => { //rota raiz do servidor get = pegar informações do servidor
   try{
-    const {id} = requisicao.params; //pegando informações do corpo da requisição
+    const {id} = requisicao.params.id; //pegando informações do corpo da requisição
     const produtos = produtos.find(produto => produto.id === id); //buscando produto pelo id e verificado se existe
     
 
