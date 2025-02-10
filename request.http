@@ -7,13 +7,22 @@ Content-Type: application/json
 
 ### rota para cadastrar um produto
 
-POST http://localhost:3000
+POST http://localhost:3000 
 Content-Type: application/json
 
 {
-    "id":1,
+    "id":2,
     "nome":"Monitor 25",
     "preco":1400,
     "quantidade":5
 }
+
 ###
+PUT http://localhost:3000 
+Content-Type: application/json
+
+{
+    "novonome": "Monitor 60",
+    "novopreco": "2500",
+    "novaquantidade":5
+}

@@ -41,6 +41,28 @@ resposta.status(500).json({msg:"Erro ao adicionar produtos"})
 }
 })
 
+//rota para editar produtos
+app.put('/:id', (requisicao, resposta) => { //rota raiz do servidor get = pegar informações do servidor
+  try{
+    const {id} = requisicao.params; //pegando informações do corpo da requisição
+    const produtos = produtos.find(produto => produto.id === id); //buscando produto pelo id e verificado se existe
+    
+
+    if (!produtos){
+      return resposta.status(404).json({msg:"Produto não encontrado"}); //resposta da busca como erro
+    }
+    const {novonome, novopreco, novaquantidade} = requisicao.body;
+    if (produtos){
+      produtos.nome = novonome;
+      produtos.preco = novopreco;
+      produtos.quantidade = novaquantidade;
+      return produtos
+    }
+    resposta.status(200).json (produtos)
+  } catch (error) {
+    resposta.status(500).json({msg:"Erro ao adicionar produtos"})
+  }
+  })
 
 
 
@@ -52,3 +74,5 @@ app.listen(port, () => { //inicializando servidor na porta definida
   console.log(`Servidor rodando em http://localhost: ${port}`) //mensagem de inicialização do servidor 
 })
 
+//para encerra o servidor no terminal ou console aperte ctrl + c
+//para rodar o servidor no terminal ou console digite node app.js
